@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-<title>Flip 7 · Vengeance</title>
+<title>Flip 7 Vengeance</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,500;1,600;1,700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -72,7 +72,7 @@ border-bottom: 1px solid rgba(212,168,87,0.18);
 position: relative;
 }
 header::after {
-content: ‘✦’;
+content: ‘\2726’;
 position: absolute;
 bottom: -10px;
 left: 50%;
@@ -282,7 +282,6 @@ background: rgba(212,168,87,0.08);
 color: var(–gold);
 }
 
-/* === MODAL === */
 .modal-backdrop {
 position: fixed;
 inset: 0;
@@ -307,8 +306,7 @@ from { transform: translateY(20px); opacity: 0; }
 to { transform: translateY(0); opacity: 1; }
 }
 .modal {
-background:
-linear-gradient(180deg, var(–felt-2), var(–felt));
+background: linear-gradient(180deg, var(–felt-2), var(–felt));
 border: 1px solid var(–gold);
 width: 100%;
 max-width: 560px;
@@ -374,9 +372,7 @@ background: rgba(0,0,0,0.3);
 border: 1px solid rgba(212,168,87,0.15);
 transition: border-color 0.2s;
 }
-.roster-row:focus-within {
-border-color: var(–gold);
-}
+.roster-row:focus-within { border-color: var(–gold); }
 .roster-row .badge {
 font-family: ‘JetBrains Mono’, monospace;
 font-size: 9px;
@@ -399,9 +395,7 @@ padding: 4px 0;
 outline: none;
 min-width: 0;
 }
-.roster-row .name-input:focus {
-border-bottom-color: var(–gold);
-}
+.roster-row .name-input:focus { border-bottom-color: var(–gold); }
 .roster-row .total-pill {
 font-family: ‘JetBrains Mono’, monospace;
 font-size: 11px;
@@ -440,15 +434,7 @@ letter-spacing: 0.1em;
 width: auto;
 padding: 0 10px;
 }
-.roster-row .remove-x:disabled {
-opacity: 0.2;
-cursor: not-allowed;
-}
-.roster-row.adding {
-border-style: dashed;
-border-color: var(–gold);
-background: rgba(212,168,87,0.05);
-}
+.roster-row .remove-x:disabled { opacity: 0.2; cursor: not-allowed; }
 
 .modal-add-btn {
 width: 100%;
@@ -467,10 +453,6 @@ margin-bottom: 14px;
 .modal-add-btn:hover {
 background: rgba(212,168,87,0.15);
 border-style: solid;
-}
-.modal-add-btn:disabled {
-opacity: 0.4;
-cursor: not-allowed;
 }
 
 .modal-footer-note {
@@ -492,7 +474,6 @@ padding: 16px;
 margin-bottom: 16px;
 position: relative;
 }
-
 .active-head {
 display: flex;
 align-items: center;
@@ -636,20 +617,6 @@ background: var(–green);
 color: var(–bone);
 border-color: var(–green);
 }
-.remove-active {
-background: transparent;
-border: 1px solid rgba(230,57,70,0.3);
-color: rgba(230,57,70,0.7);
-font-family: ‘JetBrains Mono’, monospace;
-font-size: 9px;
-letter-spacing: 0.15em;
-padding: 5px 9px;
-cursor: pointer;
-text-transform: uppercase;
-transition: all 0.2s;
-margin-left: auto;
-}
-.remove-active:hover { color: var(–blood-bright); border-color: var(–blood-bright); }
 
 .breakdown {
 font-family: ‘JetBrains Mono’, monospace;
@@ -855,7 +822,6 @@ margin-top: 18px;
 </head>
 <body>
 <div class="app">
-
   <header>
     <div class="eyebrow">A Press-Your-Luck Reckoning</div>
     <h1>Flip 7<span class="vengeance">VENGEANCE</span></h1>
@@ -870,21 +836,21 @@ margin-top: 18px;
       <div class="target-info">First to <b>200</b></div>
     </div>
     <div class="round-actions">
-      <button class="icon-btn" id="undo-btn" title="Undo last round">↶</button>
-      <button class="icon-btn" id="reset-btn" title="Reset game">⟲</button>
+      <button class="icon-btn" id="undo-btn" title="Undo last round">&#8634;</button>
+      <button class="icon-btn" id="reset-btn" title="Reset game">&#10227;</button>
     </div>
   </div>
 
   <div class="banner" id="banner">
     <div class="label">Game Over</div>
-    <div class="winner" id="winner-name">—</div>
-    <div class="score-final" id="winner-score">—</div>
+    <div class="winner" id="winner-name">&mdash;</div>
+    <div class="score-final" id="winner-score">&mdash;</div>
   </div>
 
   <div class="standings" id="standings"></div>
   <div class="roster-bar">
     <button class="roster-btn" id="quick-add-btn">+ ADD PLAYER</button>
-    <button class="roster-btn solid" id="manage-roster-btn">⚙ MANAGE</button>
+    <button class="roster-btn solid" id="manage-roster-btn">MANAGE</button>
   </div>
 
   <div class="active-panel" id="active-panel">
@@ -895,19 +861,13 @@ margin-top: 18px;
         <span class="label">THIS ROUND</span>
       </div>
     </div>
-
-```
-<div class="card-line" id="card-line"></div>
-
-<div class="status-row">
-  <button class="status-flag" data-flag="bust" id="flag-bust">BUSTED</button>
-  <button class="status-flag" data-flag="flip7" id="flag-flip7">FLIP 7 ★</button>
-  <button class="status-flag" data-flag="locked" id="flag-locked">STAYED</button>
-</div>
-
-<div class="breakdown" id="breakdown"></div>
-```
-
+    <div class="card-line" id="card-line"></div>
+    <div class="status-row">
+      <button class="status-flag" data-flag="bust" id="flag-bust">BUSTED</button>
+      <button class="status-flag" data-flag="flip7" id="flag-flip7">FLIP 7</button>
+      <button class="status-flag" data-flag="locked" id="flag-locked">STAYED</button>
+    </div>
+    <div class="breakdown" id="breakdown"></div>
   </div>
 
   <div class="palette-section">
@@ -920,23 +880,20 @@ margin-top: 18px;
     <div class="modifier-grid" id="modifier-grid"></div>
   </div>
 
-  <div class="hint">Tap cards to add · tap a placed card to remove · Flip 7 auto-detected</div>
+  <div class="hint">Tap cards to add &middot; tap a placed card to remove &middot; Flip 7 auto-detected</div>
 
-  <footer>Vengeance Edition · Keep Score, Keep Grudges</footer>
-
+  <footer>Vengeance Edition &middot; Keep Score, Keep Grudges</footer>
 </div>
-
-<!-- Manage Players Modal -->
 
 <div class="modal-backdrop" id="roster-modal">
   <div class="modal">
     <div class="modal-head">
       <div class="modal-title">Players<span class="accent" id="player-count">5</span></div>
-      <button class="modal-close" id="modal-close-btn" aria-label="Close">✕</button>
+      <button class="modal-close" id="modal-close-btn" aria-label="Close">X</button>
     </div>
     <div class="roster-list" id="roster-list"></div>
     <button class="modal-add-btn" id="modal-add-btn">+ ADD ANOTHER PLAYER</button>
-    <div class="modal-footer-note">Tap to rename · Minimum 2 players · Active player has gold border</div>
+    <div class="modal-footer-note">Tap to rename. Minimum 2 players. Active player has gold border.</div>
   </div>
 </div>
 
@@ -952,7 +909,6 @@ margin-top: 18px;
   const TARGET = 200;
   const STORAGE_KEY = 'flip7_vengeance_v3';
 
-  // Vengeance number cards: 0 (×1), 1 (×1), 2 (×2), 3 (×3) ... 13 (×13)
   const NUMBER_CARDS = [
     { val: 0, qty: 1, label: '0' },
     { val: 1, qty: 1, label: '1' },
@@ -976,24 +932,24 @@ margin-top: 18px;
     { id: '+6', val: 6, type: 'add', label: '+6' },
     { id: '+8', val: 8, type: 'add', label: '+8' },
     { id: '+10', val: 10, type: 'add', label: '+10' },
-    { id: 'x2', val: 2, type: 'mult', label: '×2' },
-    { id: '/2', val: 2, type: 'div', label: '÷2' },
-    { id: '-2', val: -2, type: 'add', label: '−2', neg: true },
-    { id: '-4', val: -4, type: 'add', label: '−4', neg: true },
-    { id: '-6', val: -6, type: 'add', label: '−6', neg: true },
-    { id: '-8', val: -8, type: 'add', label: '−8', neg: true },
-    { id: '-10', val: -10, type: 'add', label: '−10', neg: true }
+    { id: 'x2', val: 2, type: 'mult', label: 'x2' },
+    { id: '/2', val: 2, type: 'div', label: '/2' },
+    { id: '-2', val: -2, type: 'add', label: '-2', neg: true },
+    { id: '-4', val: -4, type: 'add', label: '-4', neg: true },
+    { id: '-6', val: -6, type: 'add', label: '-6', neg: true },
+    { id: '-8', val: -8, type: 'add', label: '-8', neg: true },
+    { id: '-10', val: -10, type: 'add', label: '-10', neg: true }
   ];
 
   let state = {};
 
-  async function save() {
-    try { await window.storage.set(STORAGE_KEY, JSON.stringify(state)); } catch(e) {}
+  function lsSave() {
+    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch(e) {}
   }
-  async function load() {
+  function lsLoad() {
     try {
-      const r = await window.storage.get(STORAGE_KEY);
-      if (r && r.value) { state = JSON.parse(r.value); return true; }
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if (raw) { state = JSON.parse(raw); return true; }
     } catch(e) {}
     return false;
   }
@@ -1023,7 +979,6 @@ margin-top: 18px;
     return arr.filter(n => n === val).length;
   }
 
-  // Score: divide-by-2 first (round down), x2 next, then +/- modifiers, then +15 if flip7. Floor at 0.
   function computeScore(p) {
     const c = p.current;
     if (c.busted) return { total: 0, breakdown: [{ label: 'BUSTED', val: '0' }] };
@@ -1033,11 +988,11 @@ margin-top: 18px;
     let working = numSum;
     if (c.modifiers.includes('/2')) {
       working = Math.floor(working / 2);
-      breakdown.push({ label: '÷2', val: '→ ' + working });
+      breakdown.push({ label: '/2', val: '-> ' + working });
     }
     if (c.modifiers.includes('x2')) {
       working = working * 2;
-      breakdown.push({ label: '×2', val: '→ ' + working });
+      breakdown.push({ label: 'x2', val: '-> ' + working });
     }
     const adds = c.modifiers.filter(m => m !== '/2' && m !== 'x2');
     if (adds.length) {
@@ -1050,7 +1005,7 @@ margin-top: 18px;
     }
     if (c.flip7) {
       working += 15;
-      breakdown.push({ label: 'Flip 7 bonus', val: '+15 ★' });
+      breakdown.push({ label: 'Flip 7 bonus', val: '+15' });
     }
     if (working < 0) working = 0;
     return { total: working, breakdown };
@@ -1079,7 +1034,7 @@ margin-top: 18px;
         + (p.id === state.activeId ? ' active' : '')
         + (p.id === leaderId ? ' leading' : '');
       const c = p.current;
-      let pendingText = '—';
+      let pendingText = '-';
       let pendingClass = '';
       if (c.busted) { pendingText = 'BUST'; pendingClass = 'bust'; }
       else if (c.flip7) { pendingText = 'FLIP 7'; pendingClass = 'flip7'; }
@@ -1087,14 +1042,13 @@ margin-top: 18px;
         const s = computeScore(p);
         pendingText = '+' + s.total;
       }
-      div.innerHTML = `
-        <div class="standing-name">${escapeHtml(p.name)}</div>
-        <div class="standing-score ${p.total < 0 ? 'negative' : ''}">${p.total}</div>
-        <div class="standing-pending ${pendingClass}">${pendingText}</div>
-      `;
+      div.innerHTML =
+        '<div class="standing-name">' + escapeHtml(p.name) + '</div>' +
+        '<div class="standing-score ' + (p.total < 0 ? 'negative' : '') + '">' + p.total + '</div>' +
+        '<div class="standing-pending ' + pendingClass + '">' + pendingText + '</div>';
       div.addEventListener('click', () => {
         state.activeId = p.id;
-        save();
+        lsSave();
         render();
       });
       el.appendChild(div);
@@ -1119,10 +1073,8 @@ margin-top: 18px;
       card.title = 'Tap to remove';
       card.addEventListener('click', () => {
         p.current.numbers.splice(idx, 1);
-        // re-evaluate flip7 and bust
         const unique = new Set(p.current.numbers).size;
         if (unique < 7) p.current.flip7 = false;
-        // check if any remaining duplicates that exceed allowed
         let stillBusted = false;
         const counts = {};
         p.current.numbers.forEach(x => counts[x] = (counts[x] || 0) + 1);
@@ -1131,7 +1083,7 @@ margin-top: 18px;
           if (counts[k] > allowedHere) stillBusted = true;
         }
         if (!stillBusted) p.current.busted = false;
-        save();
+        lsSave();
         render();
       });
       lineEl.appendChild(card);
@@ -1148,7 +1100,7 @@ margin-top: 18px;
       card.title = 'Tap to remove';
       card.addEventListener('click', () => {
         p.current.modifiers.splice(idx, 1);
-        save();
+        lsSave();
         render();
       });
       lineEl.appendChild(card);
@@ -1165,15 +1117,15 @@ margin-top: 18px;
 
     const bdEl = document.getElementById('breakdown');
     if (p.current.busted) {
-      bdEl.innerHTML = `<div class="row total bust"><span>BUSTED</span><span>0</span></div>`;
+      bdEl.innerHTML = '<div class="row total bust"><span>BUSTED</span><span>0</span></div>';
     } else if (!p.current.numbers.length && !p.current.modifiers.length) {
-      bdEl.innerHTML = `<div class="row" style="opacity:0.5"><span>No cards yet</span><span>0</span></div>`;
+      bdEl.innerHTML = '<div class="row" style="opacity:0.5"><span>No cards yet</span><span>0</span></div>';
     } else {
       let html = '';
       scoreObj.breakdown.forEach(b => {
-        html += `<div class="row"><span>${b.label}</span><span>${b.val}</span></div>`;
+        html += '<div class="row"><span>' + b.label + '</span><span>' + b.val + '</span></div>';
       });
-      html += `<div class="row total"><span>Round score</span><span>${scoreObj.total}</span></div>`;
+      html += '<div class="row total"><span>Round score</span><span>' + scoreObj.total + '</span></div>';
       bdEl.innerHTML = html;
     }
   }
@@ -1195,11 +1147,10 @@ margin-top: 18px;
       if (nc.lucky) marker = 'LUCKY';
       if (nc.unlucky) marker = 'UNLUCKY';
 
-      div.innerHTML = `
-        ${marker ? `<div class="marker">${marker}</div>` : ''}
-        <div>${nc.label}</div>
-        <div class="count">${used}/${nc.qty}</div>
-      `;
+      div.innerHTML =
+        (marker ? '<div class="marker">' + marker + '</div>' : '') +
+        '<div>' + nc.label + '</div>' +
+        '<div class="count">' + used + '/' + nc.qty + '</div>';
 
       div.addEventListener('click', () => {
         if (disabled) return;
@@ -1212,7 +1163,7 @@ margin-top: 18px;
           p.current.busted = true;
           p.current.flip7 = false;
         }
-        save();
+        lsSave();
         render();
       });
       grid.appendChild(div);
@@ -1230,11 +1181,11 @@ margin-top: 18px;
       if (m.neg) btn.classList.add('neg');
       if (m.id === 'x2' || m.id === '/2') btn.classList.add('div');
       if (used || p.current.busted) btn.classList.add('disabled');
-      btn.innerHTML = `${m.label}<span class="label">${m.type === 'mult' ? 'multiply' : m.type === 'div' ? 'halve' : 'add'}</span>`;
+      btn.innerHTML = m.label + '<span class="label">' + (m.type === 'mult' ? 'multiply' : m.type === 'div' ? 'halve' : 'add') + '</span>';
       btn.addEventListener('click', () => {
         if (used || p.current.busted) return;
         p.current.modifiers.push(m.id);
-        save();
+        lsSave();
         render();
       });
       grid.appendChild(btn);
@@ -1247,7 +1198,7 @@ margin-top: 18px;
       const winner = [...state.players].sort((a,b) => b.total - a.total)[0];
       banner.classList.add('show');
       document.getElementById('winner-name').textContent = winner.name + ' wins';
-      document.getElementById('winner-score').textContent = winner.total + ' POINTS · ' + (state.round - 1) + ' ROUNDS';
+      document.getElementById('winner-score').textContent = winner.total + ' POINTS - ' + (state.round - 1) + ' ROUNDS';
       document.getElementById('commit-btn').disabled = true;
     } else {
       banner.classList.remove('show');
@@ -1259,10 +1210,9 @@ margin-top: 18px;
     return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   }
 
-  // Events
   document.getElementById('active-name').addEventListener('change', e => {
     const p = getActive();
-    if (p) { p.name = e.target.value.trim() || 'Player'; save(); render(); }
+    if (p) { p.name = e.target.value.trim() || 'Player'; lsSave(); render(); }
   });
   document.getElementById('active-name').addEventListener('focus', e => e.target.select());
 
@@ -1280,18 +1230,15 @@ margin-top: 18px;
       } else if (flag === 'locked') {
         p.current.locked = !p.current.locked;
       }
-      save();
+      lsSave();
       render();
     });
   });
 
-  // Two-tap confirmation helper (mobile-safe replacement for confirm())
   function twoTapConfirm(btn, armedLabel, onConfirm) {
     if (btn._armed) {
       clearTimeout(btn._disarm);
       btn._armed = false;
-      btn._origLabel = null;
-      // Restore handled outside via re-render OR original label
       onConfirm();
       return;
     }
@@ -1316,26 +1263,22 @@ margin-top: 18px;
     if (!(p.current.numbers.length || p.current.modifiers.length || p.current.busted || p.current.flip7)) return;
     twoTapConfirm(e.currentTarget, 'CONFIRM CLEAR', () => {
       p.current = emptyCurrent();
-      save();
+      lsSave();
       render();
     });
-  });
-
-  document.getElementById('remove-player-btn')?.addEventListener('click', () => {
-    // legacy — handler retained as no-op since UI element removed
   });
 
   function addNewPlayer() {
     const newId = Math.max(0, ...state.players.map(p => p.id)) + 1;
     state.players.push({
       id: newId,
-      name: `Player ${newId}`,
+      name: 'Player ' + newId,
       total: 0,
       history: [],
       current: emptyCurrent()
     });
     state.activeId = newId;
-    save();
+    lsSave();
     render();
     return newId;
   }
@@ -1344,7 +1287,6 @@ margin-top: 18px;
     addNewPlayer();
   });
 
-  // === Roster Modal ===
   const rosterModal = document.getElementById('roster-modal');
   const rosterList = document.getElementById('roster-list');
 
@@ -1368,24 +1310,21 @@ margin-top: 18px;
       const row = document.createElement('div');
       row.className = 'roster-row';
       const canRemove = state.players.length > 2;
-      row.innerHTML = `
-        <span class="badge">P${idx + 1}</span>
-        <input type="text" class="name-input" value="${escapeHtml(p.name)}" maxlength="18" data-id="${p.id}" />
-        <span class="total-pill">${p.total}</span>
-        <button class="remove-x" data-id="${p.id}" ${canRemove ? '' : 'disabled'} title="Remove">✕</button>
-      `;
+      row.innerHTML =
+        '<span class="badge">P' + (idx + 1) + '</span>' +
+        '<input type="text" class="name-input" value="' + escapeHtml(p.name) + '" maxlength="18" data-id="' + p.id + '" />' +
+        '<span class="total-pill">' + p.total + '</span>' +
+        '<button class="remove-x" data-id="' + p.id + '" ' + (canRemove ? '' : 'disabled') + ' title="Remove">X</button>';
       rosterList.appendChild(row);
     });
 
-    // Bind name edits
     rosterList.querySelectorAll('.name-input').forEach(el => {
       el.addEventListener('change', e => {
         const id = +e.target.dataset.id;
         const p = state.players.find(x => x.id === id);
         if (p) {
           p.name = e.target.value.trim() || 'Player';
-          save();
-          // Update active panel name if relevant
+          lsSave();
           if (state.activeId === id) {
             document.getElementById('active-name').value = p.name;
           }
@@ -1394,31 +1333,26 @@ margin-top: 18px;
       el.addEventListener('focus', e => e.target.select());
     });
 
-    // Bind remove — two-tap inline confirm (works on mobile where confirm() is unreliable)
     rosterList.querySelectorAll('.remove-x').forEach(el => {
       el.addEventListener('click', e => {
         if (state.players.length <= 2) return;
         const btn = e.currentTarget;
         const id = +btn.dataset.id;
 
-        // First tap: arm confirmation
         if (!btn.classList.contains('confirm')) {
-          // Reset any other armed buttons first
           rosterList.querySelectorAll('.remove-x.confirm').forEach(b => {
             b.classList.remove('confirm');
-            b.textContent = '✕';
+            b.textContent = 'X';
           });
           btn.classList.add('confirm');
           btn.textContent = 'CONFIRM?';
-          // Auto-disarm after 3s
           btn._disarmTimer = setTimeout(() => {
             btn.classList.remove('confirm');
-            btn.textContent = '✕';
+            btn.textContent = 'X';
           }, 3000);
           return;
         }
 
-        // Second tap: actually remove
         clearTimeout(btn._disarmTimer);
         const p = state.players.find(x => x.id === id);
         if (!p) return;
@@ -1426,7 +1360,7 @@ margin-top: 18px;
         if (state.activeId === id) {
           state.activeId = state.players[0].id;
         }
-        save();
+        lsSave();
         renderRosterList();
       });
     });
@@ -1442,7 +1376,6 @@ margin-top: 18px;
     renderRosterList();
   });
 
-  // ESC to close modal
   document.addEventListener('keydown', e => {
     if (e.key === 'Escape' && rosterModal.classList.contains('show')) {
       closeRosterModal();
@@ -1475,7 +1408,7 @@ margin-top: 18px;
     state.round++;
     if (state.players.some(p => p.total >= TARGET)) state.gameOver = true;
 
-    save();
+    lsSave();
     render();
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
@@ -1488,7 +1421,7 @@ margin-top: 18px;
     state.round = last.round;
     state.gameOver = false;
     state.activeId = last.activeId;
-    save();
+    lsSave();
     render();
   });
 
@@ -1504,23 +1437,19 @@ margin-top: 18px;
         current: emptyCurrent()
       }));
       state.activeId = 1;
-      save();
+      lsSave();
       render();
     });
   });
 
-  // Init
-  (async () => {
-    const loaded = await load();
-    if (!loaded) defaultState();
-    state.players.forEach(p => {
-      if (!p.current) p.current = emptyCurrent();
-      if (typeof p.total !== 'number') p.total = 0;
-      if (!p.history) p.history = [];
-    });
-    if (!state.undoStack) state.undoStack = [];
-    render();
-  })();
+  if (!lsLoad()) defaultState();
+  state.players.forEach(p => {
+    if (!p.current) p.current = emptyCurrent();
+    if (typeof p.total !== 'number') p.total = 0;
+    if (!p.history) p.history = [];
+  });
+  if (!state.undoStack) state.undoStack = [];
+  render();
 </script>
 
 </body>
